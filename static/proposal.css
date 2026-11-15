@@ -1,0 +1,263 @@
+/* Фирменный стиль КП CNS Agency — премиум-формат.
+   Извлечён из эталонного КП агентства: тёмные шапки таблиц, жёлтые
+   акценты, info-боксы с жёлтой полосой, премиум-блок контактов. */
+
+:root {
+  --accent: #c9a227;
+  --accent-soft: #fdf6e3;
+  --dark: #1a2332;
+  --text: #2c3e50;
+  --muted: #6b7785;
+  --line: #e5e7eb;
+  --row-alt: #f7f8fa;
+  --logo: #3b4cca;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arimo', Arial, 'Segoe UI', sans-serif;
+  color: var(--text);
+  font-size: 12.5px;
+  line-height: 1.62;
+  background: #fff;
+  hyphens: manual;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* длинные слова/составные термины переносятся по словам, а не рвутся посреди */
+p, li, td, th, .prose, .variant-summary, .contact-value {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+p { margin: 9px 0; }
+strong { color: var(--dark); }
+
+/* ─── Обложка ─────────────────────────────────────────────── */
+.cover {
+  height: 247mm;                 /* высота печатной области A4 за вычетом полей */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  page-break-after: always;
+}
+.cover-logo {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--logo);
+  letter-spacing: 1px;
+}
+.cover-agency {
+  margin-top: 8px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+}
+.cover-title {
+  margin-top: 46px;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+}
+.cover-subtitle {
+  margin-top: 6px;
+  font-size: 19px;
+  color: var(--accent);
+  font-weight: 500;
+}
+.cover-rule {
+  width: 62%;
+  border: none;
+  border-top: 1px solid var(--accent);
+  margin: 40px 0;
+}
+.cover-client {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--dark);
+}
+.cover-date {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ─── Секции ──────────────────────────────────────────────── */
+.section { margin-top: 34px; }
+.section:first-of-type { margin-top: 0; }
+
+h2.section-title {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent);
+  page-break-after: avoid;
+}
+h2.section-title .num { color: var(--accent); }
+
+h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 20px 0 4px;
+  page-break-after: avoid;
+}
+
+ul { padding-left: 20px; margin: 8px 0; }
+li { margin-bottom: 5px; }
+
+/* ─── Таблицы ─────────────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 12px;
+}
+thead { display: table-header-group; }
+tr { page-break-inside: avoid; }
+th {
+  background: var(--dark);
+  color: var(--accent);
+  text-align: left;
+  padding: 9px 12px;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
+td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+tbody tr:nth-child(even) { background: var(--row-alt); }
+td.num, th.num { text-align: right; white-space: nowrap; }
+.subtotal-row td {
+  font-weight: 700;
+  color: var(--dark);
+  background: #eef0f3;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ─── Info-box ────────────────────────────────────────────── */
+.info-box {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-size: 12px;
+  line-height: 1.55;
+  page-break-inside: avoid;
+}
+.info-box p:first-child { margin-top: 0; }
+.info-box p:last-child { margin-bottom: 0; }
+
+/* ─── Стоимость ───────────────────────────────────────────── */
+/* блок варианта НЕ запрещаем рвать — иначе он целиком прыгает на новую
+   страницу и оставляет пустоту; таблица внутри переносится естественно. */
+.variant-block { margin: 22px 0; }
+.variant-head {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  page-break-after: avoid;
+}
+.variant-summary { font-size: 12px; color: var(--muted); margin: 2px 0 6px; }
+.group-sub {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 12px 0 2px;
+}
+.price-highlight {
+  margin-top: 8px;
+  padding: 9px 14px;
+  background: var(--dark);
+  border-radius: 2px;
+  page-break-inside: avoid;
+}
+.price-highlight .label { color: #fff; font-size: 13px; font-weight: 700; }
+.price-highlight .amount {
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 6px;
+}
+.price-highlight .meta { color: #aab1bd; font-size: 11.5px; }
+.badge {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--dark);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ─── Архитектурные решения / риски ───────────────────────── */
+.decision { margin: 14px 0; page-break-inside: avoid; }
+.risk-mit { color: var(--muted); }
+.caveat-list { font-size: 12px; }
+
+/* ─── Портфолио ───────────────────────────────────────────── */
+.portfolio-item {
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  background: #fafbfc;
+  padding: 12px 15px;
+  margin: 12px 0;
+  page-break-inside: avoid;
+}
+.portfolio-item h4 {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: var(--dark);
+}
+.portfolio-item p { margin: 0; font-size: 12px; color: var(--muted); }
+
+/* ─── Контакты (премиум-блок) ─────────────────────────────── */
+.contacts { margin-top: 14px; }
+.contact-row {
+  display: flex;
+  margin-bottom: 8px;
+  page-break-inside: avoid;
+}
+.contact-label {
+  width: 38%;
+  background: var(--dark);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 9px 14px;
+}
+.contact-value {
+  flex: 1;
+  background: #eef1f6;
+  color: var(--text);
+  font-size: 12.5px;
+  padding: 9px 14px;
+}
+.legal-note {
+  margin-top: 16px;
+  font-size: 10.5px;
+  color: var(--muted);
+  line-height: 1.5;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}

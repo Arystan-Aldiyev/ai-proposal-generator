@@ -1,0 +1,66 @@
+[project]
+name = "cns-proposal-generator"
+version = "0.1.0"
+description = "Multi-agent LLM tool that converts client briefs into branded commercial proposals (PDF) for CNS Agency."
+requires-python = ">=3.12"
+authors = [{ name = "Arystan Aldiyev" }]
+license = { text = "Proprietary" }
+
+dependencies = [
+    "fastapi==0.115.6",
+    "uvicorn[standard]==0.34.0",
+    "openai==1.59.6",
+    "jinja2==3.1.5",
+    "python-dotenv==1.0.1",
+    "playwright==1.49.1",
+    "pydantic>=2.11,<3",
+    "python-multipart==0.0.20",
+    "numpy==2.2.1",
+    "langgraph==1.2.2",
+    "langsmith==0.8.5",
+    "mcp==1.27.1",
+    "pymupdf==1.27.2.3",
+    # starlette закреплён для совместимости FastAPI 0.115 с MCP 1.27
+    "starlette<0.42",
+    "anthropic>=0.104.1",
+    "aiogram>=3.28.2",
+]
+
+[project.scripts]
+cns-mcp = "app.mcp_server:mcp.run"
+
+[tool.uv]
+# pip-resolver совместим с нашими версиями;
+# starlette конфликт между fastapi 0.115 и sse-starlette из mcp решён override.
+override-dependencies = ["starlette<0.42"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "matplotlib==3.9.2",
+    "pytest==8.3.4",
+    "ruff==0.8.6",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["storage"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+# длинные строки — в основном тексты промптов и подсказок на русском
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff.lint.flake8-bugbear]
+# стандартная идиома FastAPI: File(...)/Form(...)/Depends(...) в аргументах по умолчанию
+extend-immutable-calls = ["fastapi.Depends", "fastapi.File", "fastapi.Form"]

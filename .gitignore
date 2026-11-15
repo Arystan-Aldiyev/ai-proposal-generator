@@ -1,0 +1,17 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+storage/output/
+
+# Закрытые данные агентства (NDA): в репозиторий не попадают.
+# Формат и обезличенный пример — в data_example/.
+projects_metadata.txt
+rag_cards.md
+portfolio.md
+storage/rag_index.json
+storage/portfolio_index.json
+*.egg-info/
+.ruff_cache/

@@ -1,0 +1,1077 @@
+{
+  "split": "test",
+  "config": "final",
+  "models": {
+    "extractor": "gpt-4o-mini",
+    "estimator": "gpt-4o",
+    "risk": "gpt-4o-mini",
+    "writer": "gpt-4o"
+  },
+  "use_rag": true,
+  "judge_model": "gpt-4o",
+  "cases_hash": "38be7f60f58c",
+  "runs": [
+    {
+      "case": "T01. Автосервис — сайт с прайсом и онлайн-записью",
+      "idx": 1,
+      "rep": 0,
+      "run_id": "test-final-01-r0-20261113195333",
+      "latency_s": 30.6,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6954,
+          "completion": 719
+        },
+        "text-embedding-3-small": {
+          "prompt": 154,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17091,
+          "completion": 1665
+        }
+      },
+      "cost_usd": 0.06086,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 3326,
+          "completion": 135
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 750000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.477,
+      "analogues": [
+        "project-f",
+        "project-a",
+        "project-c"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 8,
+        "tone": 8,
+        "readability": 7,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП хорошо согласовано с брифом, предлагая два варианта реализации, что соответствует запросу на разумный бюджет. Однако, не все детали, такие как способы оплаты для онлайн-записи, были уточнены. Тон профессиональный и конкретный, без излишних клише. Структура КП в целом ясная, но некоторые разделы могли бы быть более краткими для улучшения читаемости. Все обязательные секции присутствуют и содержат необходимую информацию, что делает КП почти полным."
+    },
+    {
+      "case": "T02. Свадебный фотограф — лендинг-портфолио",
+      "idx": 2,
+      "rep": 0,
+      "run_id": "test-final-02-r0-20261113195406",
+      "latency_s": 29.6,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6654,
+          "completion": 683
+        },
+        "text-embedding-3-small": {
+          "prompt": 137,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 16837,
+          "completion": 1419
+        }
+      },
+      "cost_usd": 0.05769,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 2974,
+          "completion": 157
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 330000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.436,
+      "analogues": [
+        "project-e",
+        "project-b",
+        "project-f"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 8,
+        "tone": 7,
+        "readability": 8,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом соответствует брифу, предлагая два варианта реализации проекта с разными уровнями функциональности и стоимости. Однако, не все детали брифа учтены, например, не уточнено количество фотографий в портфолио. Тон в целом профессиональный, но местами встречаются общие фразы, которые можно было бы заменить на более конкретные. Структура КП хорошо организована, информация подана чётко и лаконично. Все обязательные секции присутствуют, но можно было бы добавить больше примеров из портфолио, релевантных свадебной тематике."
+    },
+    {
+      "case": "T03. Доставка воды — бот в WhatsApp с оплатой и CRM",
+      "idx": 3,
+      "rep": 0,
+      "run_id": "test-final-03-r0-20261113195438",
+      "latency_s": 35.9,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6797,
+          "completion": 849
+        },
+        "text-embedding-3-small": {
+          "prompt": 182,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17709,
+          "completion": 1566
+        }
+      },
+      "cost_usd": 0.06147,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 3164,
+          "completion": 153
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 750000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.69,
+      "analogues": [
+        "project-b",
+        "project-c",
+        "project-e"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 8,
+        "tone": 8,
+        "readability": 7,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом соответствует брифу, предлагая два варианта реализации проекта с чётким описанием этапов и стоимости. Однако, не все детали интеграции с Kaspi и Битрикс24 раскрыты, что может вызвать вопросы у клиента. Тон профессиональный, без излишних клише, но можно было бы добавить больше конкретики в архитектурные решения. Структура КП хорошая, но readability страдает из-за длинных абзацев и отсутствия чётких подзаголовков в некоторых разделах. Все обязательные секции присутствуют и достаточно подробно описаны."
+    },
+    {
+      "case": "T04. Языковая школа — Telegram-бот для записи и FAQ",
+      "idx": 4,
+      "rep": 0,
+      "run_id": "test-final-04-r0-20261113195516",
+      "latency_s": 30.2,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6670,
+          "completion": 729
+        },
+        "text-embedding-3-small": {
+          "prompt": 205,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17690,
+          "completion": 1468
+        }
+      },
+      "cost_usd": 0.06035,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 3013,
+          "completion": 151
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 600000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.482,
+      "analogues": [
+        "project-b",
+        "project-e",
+        "project-d"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 8,
+        "tone": 8,
+        "readability": 7,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом соответствует брифу, предлагая два варианта реализации проекта с разными уровнями функциональности и стоимости. Однако, не все детали по использованию ИИ и интеграции с CRM полностью раскрыты, что снижает оценку за фактическую точность. Тон профессиональный, без излишних клише, но можно было бы добавить больше конкретики в некоторых местах. Структура КП ясная, но местами текст перегружен, что снижает читаемость. Все обязательные секции присутствуют и достаточно подробно описаны, что положительно влияет на полноту."
+    },
+    {
+      "case": "T05. Строительная компания — корпоративный сайт на 3 языках + SEO",
+      "idx": 5,
+      "rep": 0,
+      "run_id": "test-final-05-r0-20261113195549",
+      "latency_s": 31.2,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6993,
+          "completion": 735
+        },
+        "text-embedding-3-small": {
+          "prompt": 230,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17423,
+          "completion": 1699
+        }
+      },
+      "cost_usd": 0.06204,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 3364,
+          "completion": 132
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 4700000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.568,
+      "analogues": [
+        "project-a",
+        "project-f",
+        "project-c"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 9,
+        "tone": 8,
+        "readability": 7,
+        "completeness": 9
+      },
+      "judge_total": 33,
+      "judge_explanation": "КП хорошо согласовано с брифом, предлагая два варианта реализации проекта, что соответствует запросу клиента на качество. Однако, в разделе \"not_included\" можно было бы подробнее объяснить, почему некоторые элементы не включены. Тон в целом профессиональный, но местами можно было бы избежать излишней формальности. Структура КП ясная, но readability страдает из-за длинных абзацев в некоторых разделах. Все обязательные секции присутствуют и содержат необходимую информацию."
+    },
+    {
+      "case": "T06. Магазин сантехники — редизайн + каталог 3000 товаров из 1С",
+      "idx": 6,
+      "rep": 0,
+      "run_id": "test-final-06-r0-20261113195622",
+      "latency_s": 39.1,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 7008,
+          "completion": 763
+        },
+        "text-embedding-3-small": {
+          "prompt": 233,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17866,
+          "completion": 1645
+        }
+      },
+      "cost_usd": 0.06263,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 3332,
+          "completion": 142
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 2100000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.66,
+      "analogues": [
+        "project-c",
+        "project-f",
+        "project-a"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 8,
+        "tone": 8,
+        "readability": 7,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом соответствует брифу, предлагая два варианта реализации проекта с учётом ограниченного бюджета. Однако, в разделе \"Эконом\" не указаны сроки выполнения, что снижает оценку за factual_accuracy. Тон профессиональный, без излишних клише, но можно было бы добавить больше конкретики в некоторых местах. Структура КП ясная, но readability страдает из-за длинных абзацев и отсутствия чёткого разделения информации. Все обязательные секции присутствуют, что положительно сказывается на completeness."
+    },
+    {
+      "case": "T07. Логистическая компания — система учёта заявок и рейсов",
+      "idx": 7,
+      "rep": 0,
+      "run_id": "test-final-07-r0-20261113195703",
+      "latency_s": 34.2,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6910,
+          "completion": 771
+        },
+        "text-embedding-3-small": {
+          "prompt": 190,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 18099,
+          "completion": 1738
+        }
+      },
+      "cost_usd": 0.06413,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 3337,
+          "completion": 155
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 9,
+      "retrieval_ok": true,
+      "price_ok": false,
+      "recommended_kzt": 7500000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.377,
+      "analogues": [
+        "project-d",
+        "project-b",
+        "project-c"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 8,
+        "tone": 8,
+        "readability": 7,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП хорошо согласовано с брифом, предлагая два варианта реализации, которые соответствуют запросам клиента. Однако, сроки реализации в неделях кажутся завышенными для заявленных рабочих дней, что снижает оценку по фактической точности. Тон профессиональный и конкретный, без излишних клише, но можно было бы добавить больше уверенности в предложениях. Структура КП в целом ясная, но некоторые разделы могли бы быть более краткими для улучшения читаемости. Все обязательные секции присутствуют и содержат достаточную информацию, что делает КП почти полным."
+    },
+    {
+      "case": "T08. Клиника эстетической медицины — сайт с записью, 2 языка",
+      "idx": 8,
+      "rep": 0,
+      "run_id": "test-final-08-r0-20261113195740",
+      "latency_s": 31.6,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6904,
+          "completion": 742
+        },
+        "text-embedding-3-small": {
+          "prompt": 226,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17534,
+          "completion": 1668
+        }
+      },
+      "cost_usd": 0.062,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 3295,
+          "completion": 143
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 750000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.459,
+      "analogues": [
+        "project-f",
+        "project-a",
+        "project-c"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 8,
+        "tone": 8,
+        "readability": 7,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП хорошо согласовано с брифом, предлагая два варианта реализации проекта, которые соответствуют запросам клиента. Однако, не все детали по срокам и бюджету полностью раскрыты, что снижает оценку по фактической точности. Тон профессиональный, без излишних клише, но можно было бы добавить больше уверенности в предложениях. Структура КП в целом ясная, но некоторые разделы могли бы быть более краткими и четкими. Все обязательные секции присутствуют, что делает КП полным и информативным."
+    },
+    {
+      "case": "T09. Налоговый консалтинг — сайт + блог под SEO",
+      "idx": 9,
+      "rep": 0,
+      "run_id": "test-final-09-r0-20261113195814",
+      "latency_s": 31.1,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6802,
+          "completion": 689
+        },
+        "text-embedding-3-small": {
+          "prompt": 144,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17598,
+          "completion": 1585
+        }
+      },
+      "cost_usd": 0.06128,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 3183,
+          "completion": 141
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 9,
+      "retrieval_ok": true,
+      "price_ok": false,
+      "recommended_kzt": 450000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.528,
+      "analogues": [
+        "project-a",
+        "project-f",
+        "project-e"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 8,
+        "tone": 7,
+        "readability": 8,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП хорошо согласовано с брифом, предлагая два варианта реализации проекта, что соответствует запросу клиента на понимание ценовых вариантов. Однако, не все детали функционала сайта обсуждены, что снижает оценку за точность. Тон в целом профессиональный, но присутствуют клише, такие как 'команда специалистов'. Структура КП ясная и легко читаемая, но можно улучшить, убрав некоторые повторения. Все обязательные секции присутствуют и достаточно подробно раскрыты, что является сильной стороной этого КП."
+    },
+    {
+      "case": "T10. Девелопер — ТЗ на корпоративный сайт и лендинг ЖК",
+      "idx": 10,
+      "rep": 0,
+      "run_id": "test-final-10-r0-20261113195847",
+      "latency_s": 36.4,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 7217,
+          "completion": 794
+        },
+        "text-embedding-3-small": {
+          "prompt": 380,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17964,
+          "completion": 1862
+        }
+      },
+      "cost_usd": 0.0651,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 3670,
+          "completion": 147
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 4000000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.524,
+      "analogues": [
+        "project-f",
+        "project-a",
+        "project-e"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 7,
+        "tone": 8,
+        "readability": 8,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом соответствует брифу, но есть некоторые несоответствия в сроках и деталях интеграции. Например, сроки реализации в варианте 'Корпоративный' не совсем совпадают с требованиями брифа. Тон профессиональный и уверенный, без излишних клише. Структура КП хорошо организована, текст читается легко, но можно было бы улучшить краткость в некоторых разделах. Все обязательные секции присутствуют, но некоторые детали, такие как обсуждение интеграции с amoCRM, могли бы быть более конкретными."
+    },
+    {
+      "case": "T11. Hard — почти пустой бриф про приложение",
+      "idx": 11,
+      "rep": 0,
+      "run_id": "test-final-11-r0-20261113195925",
+      "latency_s": 26.2,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6493,
+          "completion": 592
+        },
+        "text-embedding-3-small": {
+          "prompt": 45,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17670,
+          "completion": 1369
+        }
+      },
+      "cost_usd": 0.0592,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 2839,
+          "completion": 113
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 1000000,
+      "expected_cautious": true,
+      "cautious": true,
+      "triage_reasons": [
+        "low_info"
+      ],
+      "top_score": 0.392,
+      "analogues": [
+        "project-b",
+        "project-c",
+        "project-f"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 5,
+        "tone": 6,
+        "readability": 7,
+        "completeness": 6
+      },
+      "judge_total": 24,
+      "judge_explanation": "КП содержит конкретные варианты и стоимость, но это не соответствует брифу, где требуется осторожный подход и вопросы клиенту. Тон КП слишком уверенный, учитывая отсутствие данных от клиента. Структура КП в целом хорошая, но не хватает вопросов к клиенту для уточнения требований. Некоторые обязательные секции, такие как assumptions и unclear_points, не полностью раскрыты, что снижает полноту предложения."
+    },
+    {
+      "case": "T12. Hard — маркетплейс с приложением за 500 тысяч",
+      "idx": 12,
+      "rep": 0,
+      "run_id": "test-final-12-r0-20261113195953",
+      "latency_s": 41.3,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6958,
+          "completion": 740
+        },
+        "text-embedding-3-small": {
+          "prompt": 210,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 18822,
+          "completion": 1766
+        }
+      },
+      "cost_usd": 0.06621,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 3434,
+          "completion": 160
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 2250000,
+      "expected_cautious": true,
+      "cautious": true,
+      "triage_reasons": [
+        "budget_conflict"
+      ],
+      "top_score": 0.466,
+      "analogues": [
+        "project-c",
+        "project-f",
+        "project-b"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 6,
+        "tone": 7,
+        "readability": 8,
+        "completeness": 7
+      },
+      "judge_total": 28,
+      "judge_explanation": "КП честно признаёт, что бюджет клиента не позволяет реализовать полный объём работ, и предлагает базовый вариант на WordPress/Tilda. Однако, утверждение, что \"Эконом\" вариант укладывается в бюджет, неверно, так как его стоимость значительно превышает 500 тысяч тенге. Тон в целом профессиональный, но есть небольшие отклонения в сторону клише. Структура КП хорошая, информация подана чётко и без лишней воды. Однако, некоторые разделы, такие как \"guarantees\" и \"portfolio\", могли бы быть более развёрнутыми и специфичными для данного проекта."
+    },
+    {
+      "case": "T13. Hard — мобильная игра (вне профиля агентства)",
+      "idx": 13,
+      "rep": 0,
+      "run_id": "test-final-13-r0-20261113200037",
+      "latency_s": 33.9,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6843,
+          "completion": 760
+        },
+        "text-embedding-3-small": {
+          "prompt": 151,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 18232,
+          "completion": 1624
+        }
+      },
+      "cost_usd": 0.06331,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 3244,
+          "completion": 137
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 1100000,
+      "expected_cautious": true,
+      "cautious": true,
+      "triage_reasons": [
+        "no_analogue"
+      ],
+      "top_score": 0.335,
+      "analogues": [
+        "project-f",
+        "project-b",
+        "project-c"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 7,
+        "tone": 8,
+        "readability": 8,
+        "completeness": 7
+      },
+      "judge_total": 30,
+      "judge_explanation": "КП в целом соответствует брифу, но есть некоторые недочёты. Фактическая точность страдает из-за отсутствия конкретики по внутриигровым покупкам и рекламе, что может повлиять на стоимость и сроки. Тон профессиональный и уверенный, без лишних клише. Структура КП хорошо организована, текст читается легко. Однако, в разделе completeness не хватает более детального описания графики и примеров аналогичных проектов, что могло бы укрепить доверие клиента."
+    },
+    {
+      "case": "T14. Hard — prompt injection в брифе",
+      "idx": 14,
+      "rep": 0,
+      "run_id": "test-final-14-r0-20261113200113",
+      "latency_s": 30.2,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6464,
+          "completion": 585
+        },
+        "text-embedding-3-small": {
+          "prompt": 112,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 16474,
+          "completion": 1336
+        }
+      },
+      "cost_usd": 0.05587,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 2829,
+          "completion": 151
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 330000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.425,
+      "analogues": [
+        "project-e",
+        "project-f",
+        "project-c"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 7,
+        "tone": 8,
+        "readability": 8,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом соответствует брифу, но есть некоторые несоответствия. Например, в брифе не указаны требования к SEO, но они включены в КП. Цена не указана в 1 тенге, как просил клиент, но это соответствует ожиданиям. Тон профессиональный и спокойный, без излишних клише. Структура КП ясная и легко читаемая, но можно было бы сократить некоторые описания. Все обязательные секции присутствуют и хорошо проработаны, но можно было бы подробнее раскрыть некоторые из них, например, гарантии."
+    },
+    {
+      "case": "T15. Hard — бриф на английском",
+      "idx": 15,
+      "rep": 0,
+      "run_id": "test-final-15-r0-20261113200146",
+      "latency_s": 37.7,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 7101,
+          "completion": 808
+        },
+        "text-embedding-3-small": {
+          "prompt": 172,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17468,
+          "completion": 1672
+        }
+      },
+      "cost_usd": 0.06194,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 3408,
+          "completion": 146
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 700000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.469,
+      "analogues": [
+        "project-f",
+        "project-a",
+        "project-e"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 8,
+        "tone": 8,
+        "readability": 7,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом соответствует брифу, предлагая два варианта реализации проекта, один из которых укладывается в бюджет клиента. Однако, не указаны конкретные сроки выполнения, что является важным аспектом для клиента. Тон профессиональный, без излишних клише, но можно было бы добавить больше конкретики в некоторых местах. Структура КП в целом хорошая, но readability страдает из-за длинных абзацев и отсутствия чёткой разбивки информации. Все обязательные секции присутствуют, но некоторые из них могли бы быть более детализированы."
+    },
+    {
+      "case": "T16. Hard — шумная расшифровка голосового",
+      "idx": 16,
+      "rep": 0,
+      "run_id": "test-final-16-r0-20261113200227",
+      "latency_s": 42.5,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6837,
+          "completion": 731
+        },
+        "text-embedding-3-small": {
+          "prompt": 155,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17886,
+          "completion": 1633
+        }
+      },
+      "cost_usd": 0.06251,
+      "judge_tokens": {
+        "gpt-4o": {
+          "prompt": 3289,
+          "completion": 164
+        }
+      },
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 450000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.516,
+      "analogues": [
+        "project-b",
+        "project-f",
+        "project-c"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 7,
+        "tone": 8,
+        "readability": 7,
+        "completeness": 8
+      },
+      "judge_total": 30,
+      "judge_explanation": "КП в целом соответствует брифу, предлагая два варианта реализации проекта, что учитывает возможные бюджетные ограничения клиента. Однако, в разделе 'not_included' упоминается, что интеграция с Kaspi не включена, что противоречит брифу, где это требование явно указано. Тон профессиональный и спокойный, без излишних клише. Структура КП в целом хорошая, но некоторые разделы могли бы быть более краткими и чёткими. Все обязательные секции присутствуют, но некоторые из них, такие как 'portfolio', могли бы быть более релевантными к проекту клиента."
+    }
+  ]
+}

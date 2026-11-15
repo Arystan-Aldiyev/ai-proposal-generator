@@ -1,0 +1,41 @@
+projects_metadata — format example (synthetic data)
+====================================================
+The real projects_metadata.txt lives in the project root and is not part of
+the repository (client NDAs). This file shows the same format with one
+made-up project and placeholder prices. Project blocks are separated by "---".
+
+---
+
+[PROJECT_ID: project-x]
+name_disclosure: none
+service_disclosure: none
+anonymized_label: (не показывать клиенту)
+anonymized_blurb:
+client_name: Сеть салонов красоты (вымышленный пример)
+client_industry: Услуги / B2C
+project_type: Сайт с онлайн-записью и Telegram-уведомлениями
+input_type: Бриф
+scope_summary: Сайт на три филиала: услуги и цены, мастера, онлайн-запись с выбором времени, уведомления администратору в Telegram, русский и казахский языки.
+pricing_model: Разовая стоимость + регулярные расходы
+price_variant_a: 1 000 000 (условно; 20 раб. дней) — «Эконом», конструктор
+price_variant_b: 2 500 000 (условно; 45 раб. дней) — «Корпоративный», свой backend
+cost_breakdown:
+  - Дизайн: 300 000 (условно)
+  - Разработка и запись: 500 000 (условно)
+  - Тестирование и запуск: 200 000 (условно)
+recurring_costs:
+  - Хостинг и домен: ~10 000/мес (условно)
+duration: 4–9 недель в зависимости от варианта
+payment_terms: 50% предоплата / 50% после сдачи
+warranty: 1 месяц поддержки после запуска
+not_included: контент (тексты, фото), интеграция с кассой
+notable_signals: два варианта по технологии; регулярные расходы отдельным блоком
+
+---
+
+СВОДНЫЕ ПАТТЕРНЫ (для агента-Estimator и агента-Writer):
+
+ценовые_якоря (условные цифры для примера формата):
+  - Лендинг на конструкторе: X–Y ₸, ~10 раб. дней
+  - Бот в мессенджере + CRM: X–Y ₸ разово + подписки
+  - Корпоративный сайт на своём стеке: X–Y ₸, 8–15 нед

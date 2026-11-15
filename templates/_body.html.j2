@@ -1,0 +1,265 @@
+{# Тело КП. Общий партиал для PDF (proposal.html.j2) и редактируемого
+   превью (editor.html.j2). Атрибуты data-field помечают редактируемые поля;
+   в PDF они инертны, в превью JS делает их contenteditable. #}
+
+{% macro paragraphs(text) %}
+  {% for para in text.split('\n') %}
+    {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+  {% endfor %}
+{% endmacro %}
+
+{# ─── Обложка ───────────────────────────────────────────────────── #}
+<div class="cover">
+  <div class="cover-logo">{{ agency.logo_text }}</div>
+  <div class="cover-agency">{{ agency.name }}</div>
+  <div class="cover-title">Коммерческое предложение</div>
+  <div class="cover-subtitle" data-field="proposal.subtitle">{{ proposal.subtitle }}</div>
+  <hr class="cover-rule">
+  {% if client_label %}<div class="cover-client">{{ client_label }}</div>{% endif %}
+  <div class="cover-date">{{ date_label }}</div>
+</div>
+
+{# ─── 1. CNS Agency ─────────────────────────────────────────────── #}
+<div class="section">
+  <h2 class="section-title"><span class="num">1.</span> CNS Agency</h2>
+  <div class="prose" data-field="proposal.intro">{{ paragraphs(proposal.intro) }}</div>
+</div>
+
+{# ─── 2. Что важно проговорить до старта ────────────────────────── #}
+<div class="section">
+  <h2 class="section-title"><span class="num">2.</span> Что важно проговорить до старта</h2>
+  <div class="prose" data-field="proposal.architecture_intro">{{ paragraphs(proposal.architecture_intro) }}</div>
+
+  {% for d in risks.architectural_decisions %}
+  <div class="decision">
+    <h3 data-field="risks.architectural_decisions.{{ loop.index0 }}.title">{{ d.title }}</h3>
+    <p data-field="risks.architectural_decisions.{{ loop.index0 }}.description">{{ d.description }}</p>
+  </div>
+  {% endfor %}
+
+  {% if risks.risks %}
+  <h3>Риски и как мы их снимаем</h3>
+  <table>
+    <thead><tr><th style="width:26%">Риск</th><th style="width:34%">Чем грозит</th><th>Как снимаем</th></tr></thead>
+    <tbody>
+    {% for r in risks.risks %}
+      <tr>
+        <td><strong data-field="risks.risks.{{ loop.index0 }}.title">{{ r.title }}</strong></td>
+        <td data-field="risks.risks.{{ loop.index0 }}.impact">{{ r.impact }}</td>
+        <td class="risk-mit" data-field="risks.risks.{{ loop.index0 }}.mitigation">{{ r.mitigation }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+  {% if risks.caveats %}
+  <div class="info-box caveat-list">
+    <p><strong>Важные оговорки</strong></p>
+    <ul>
+      {% for c in risks.caveats %}<li data-field="risks.caveats.{{ loop.index0 }}">{{ c }}</li>{% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>
+
+{# ─── 3. Этапы и сроки ──────────────────────────────────────────── #}
+<div class="section">
+  <h2 class="section-title"><span class="num">3.</span> Этапы и сроки</h2>
+  <div class="prose" data-field="proposal.stages_intro">{{ paragraphs(proposal.stages_intro) }}</div>
+
+  {% for v in variants %}
+  {% set vi = loop.index0 %}
+  <div class="variant-block">
+    <div class="variant-head">
+      {{ v.variant.name }}
+      {% if v.variant.name == estimation.recommended_variant %}<span class="badge">рекомендуем</span>{% endif %}
+    </div>
+    <table>
+      <thead><tr><th style="width:28%">Этап</th><th>Содержание</th><th class="num" style="width:14%">Раб. дни</th></tr></thead>
+      <tbody>
+      {% for s in v.variant.stages %}
+        <tr>
+          <td><strong data-field="estimation.variants.{{ vi }}.stages.{{ loop.index0 }}.name">{{ s.name }}</strong></td>
+          <td data-field="estimation.variants.{{ vi }}.stages.{{ loop.index0 }}.description">{{ s.description }}</td>
+          <td class="num" data-field="estimation.variants.{{ vi }}.stages.{{ loop.index0 }}.work_days">{{ s.work_days }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <div class="price-highlight">
+      <span class="label">{{ v.variant.name }} — срок:</span>
+      <span class="amount">{{ v.variant.work_days }}</span>
+      <span class="meta">рабочих дней &nbsp;·&nbsp; ≈ {{ v.variant.duration }}</span>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{# ─── 4. Стоимость ──────────────────────────────────────────────── #}
+<div class="section">
+  <h2 class="section-title"><span class="num">4.</span> Стоимость</h2>
+  <div class="prose" data-field="proposal.pricing_intro">{{ paragraphs(proposal.pricing_intro) }}</div>
+
+  {% for v in variants %}
+  {% set vi = loop.index0 %}
+  <div class="variant-block">
+    <div class="variant-head">
+      <span data-field="estimation.variants.{{ vi }}.name">{{ v.variant.name }}</span>
+      {% if v.variant.name == estimation.recommended_variant %}<span class="badge">рекомендуем</span>{% endif %}
+    </div>
+    <div class="variant-summary" data-field="estimation.variants.{{ vi }}.summary">{{ v.variant.summary }}</div>
+
+    {% if v.grouped %}
+      {% for g in v.groups %}
+      <div class="group-sub">{{ g.name }}</div>
+      <table>
+        <thead><tr><th>Раздел работ</th><th class="num" style="width:22%">Стоимость</th></tr></thead>
+        <tbody>
+        {% for x in g.items %}
+          <tr>
+            <td data-field="estimation.variants.{{ vi }}.cost_items.{{ x.idx }}.item">{{ x.ci.item }}</td>
+            <td class="num" data-field="estimation.variants.{{ vi }}.cost_items.{{ x.idx }}.amount_kzt">{{ x.ci.amount_kzt | kzt }}</td>
+          </tr>
+        {% endfor %}
+          <tr class="subtotal-row"><td>Итого по «{{ g.name }}»</td><td class="num">{{ g.subtotal | kzt }}</td></tr>
+        </tbody>
+      </table>
+      {% endfor %}
+    {% else %}
+      <table>
+        <thead><tr><th>Раздел работ</th><th class="num" style="width:22%">Стоимость</th></tr></thead>
+        <tbody>
+        {% for ci in v.variant.cost_items %}
+          <tr>
+            <td data-field="estimation.variants.{{ vi }}.cost_items.{{ loop.index0 }}.item">{{ ci.item }}</td>
+            <td class="num" data-field="estimation.variants.{{ vi }}.cost_items.{{ loop.index0 }}.amount_kzt">{{ ci.amount_kzt | kzt }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+
+    <div class="price-highlight">
+      <span class="label">{{ v.variant.name }}:</span>
+      <span class="amount">{{ v.variant.total_kzt | kzt }}</span>
+      <span class="meta">без НДС · {{ v.variant.work_days }} раб. дней · {{ v.variant.duration }}</span>
+    </div>
+  </div>
+  {% endfor %}
+
+  <div class="info-box">
+    <p><strong>Цены и налоговый режим.</strong> Все суммы указаны в тенге, без НДС
+    (база — ИП на упрощённой декларации). В режиме ОУР сумма ≈ ×1.1, оплата услуг
+    относится на вычеты по КПН:</p>
+    <ul>
+      {% for v in variants %}
+      <li>{{ v.variant.name }}: {{ v.variant.total_kzt | kzt }} (упрощёнка) ·
+          {{ v.variant.total_our_tax_kzt | kzt }} (ОУР)</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <h3>Условия оплаты</h3>
+  <table>
+    <thead><tr><th style="width:32%">Этап</th><th class="num" style="width:14%">Доля</th><th>Момент оплаты</th></tr></thead>
+    <tbody>
+    {% for p in estimation.payment_schedule %}
+      <tr>
+        <td><strong data-field="estimation.payment_schedule.{{ loop.index0 }}.name">{{ p.name }}</strong></td>
+        <td class="num" data-field="estimation.payment_schedule.{{ loop.index0 }}.share">{{ p.share }}</td>
+        <td data-field="estimation.payment_schedule.{{ loop.index0 }}.moment">{{ p.moment }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  {% if estimation.recurring_costs %}
+  <h3>Регулярные расходы</h3>
+  <p>Это не наши работы, а сторонние сервисы. Оплачиваются клиентом напрямую,
+  выделены отдельным блоком для прозрачности.</p>
+  <table>
+    <thead><tr><th style="width:34%">Статья</th><th style="width:22%">Сумма</th><th>Примечание</th></tr></thead>
+    <tbody>
+    {% for r in estimation.recurring_costs %}
+      <tr>
+        <td><strong data-field="estimation.recurring_costs.{{ loop.index0 }}.item">{{ r.item }}</strong></td>
+        <td data-field="estimation.recurring_costs.{{ loop.index0 }}.amount">{{ r.amount }}</td>
+        <td data-field="estimation.recurring_costs.{{ loop.index0 }}.note">{{ r.note or '' }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</div>
+
+{# ─── 5. Команда ────────────────────────────────────────────────── #}
+<div class="section">
+  <h2 class="section-title"><span class="num">5.</span> Команда проекта</h2>
+  <div class="prose" data-field="proposal.team_intro">{{ paragraphs(proposal.team_intro) }}</div>
+  <table>
+    <thead><tr><th style="width:34%">Роль</th><th>Зона ответственности</th></tr></thead>
+    <tbody>
+    {% for t in estimation.team %}
+      <tr>
+        <td><strong data-field="estimation.team.{{ loop.index0 }}.role">{{ t.role }}</strong></td>
+        <td data-field="estimation.team.{{ loop.index0 }}.responsibility">{{ t.responsibility }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{# ─── 6. Что входит и гарантии ──────────────────────────────────── #}
+<div class="section">
+  <h2 class="section-title"><span class="num">6.</span> Что входит и гарантии</h2>
+  <h3>Что входит в стоимость</h3>
+  <ul>{% for i in proposal.included %}<li data-field="proposal.included.{{ loop.index0 }}">{{ i }}</li>{% endfor %}</ul>
+
+  <h3>Что НЕ входит</h3>
+  <ul>{% for i in proposal.not_included %}<li data-field="proposal.not_included.{{ loop.index0 }}">{{ i }}</li>{% endfor %}</ul>
+
+  <h3>Гарантия и поддержка</h3>
+  <ul>{% for g in proposal.guarantees %}<li data-field="proposal.guarantees.{{ loop.index0 }}">{{ g }}</li>{% endfor %}</ul>
+</div>
+
+{# ─── 7. Релевантные проекты ────────────────────────────────────── #}
+{% if proposal.portfolio %}
+<div class="section">
+  <h2 class="section-title"><span class="num">7.</span> Релевантные проекты</h2>
+  {% for item in proposal.portfolio %}
+  <div class="portfolio-item">
+    <h4 data-field="proposal.portfolio.{{ loop.index0 }}.title">{{ item.title }}</h4>
+    <p data-field="proposal.portfolio.{{ loop.index0 }}.blurb">{{ item.blurb }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{# ─── 8. Контакты ───────────────────────────────────────────────── #}
+<div class="section">
+  <h2 class="section-title"><span class="num">8.</span> Контакты и следующий шаг</h2>
+  <div class="contacts">
+    <div class="contact-row">
+      <div class="contact-label">Агентство</div>
+      <div class="contact-value">{{ agency.name }}</div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-label">Менеджер проекта</div>
+      <div class="contact-value">{{ agency.manager }}</div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-label">Телефон / WhatsApp</div>
+      <div class="contact-value">{{ agency.phone }}</div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-label">Email</div>
+      <div class="contact-value">{{ agency.email }}</div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-label">Следующий шаг</div>
+      <div class="contact-value" data-field="proposal.next_step">{{ proposal.next_step }}</div>
+    </div>
+  </div>
+  <div class="legal-note">{{ agency.legal }}</div>
+</div>

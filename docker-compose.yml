@@ -1,0 +1,42 @@
+# docker-compose для локальной разработки и демонстрации.
+# Для запуска:
+#   1) Скопируй .env.example в .env, впиши ключи (OPENAI + LANGSMITH).
+#   2) docker compose up --build
+#   3) Открой http://localhost:8000
+
+services:
+  proposal-generator:
+    build: .
+    image: cns-proposal-generator:latest
+    container_name: cns-proposal
+    ports:
+      # только localhost: наружу приложение отдаёт reverse proxy с HTTPS
+      # (deploy/README.md). Docker обходит UFW, поэтому не публикуем 0.0.0.0.
+      - "127.0.0.1:8000:8000"
+    env_file:
+      - .env
+    volumes:
+      # storage для run_id/state.json/PDF — переживает restart контейнера
+      - ./storage:/app/storage
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8000/health > /dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  telegram-bot:
+    # Опциональный профиль: docker compose --profile bot up -d
+    # Без TELEGRAM_BOT_TOKEN не стартует, поэтому держим отдельным сервисом
+    # чтобы основной API не падал из-за отсутствия токена бота.
+    profiles: ["bot"]
+    image: cns-proposal-generator:latest
+    container_name: cns-proposal-bot
+    command: ["uv", "run", "python", "-m", "bot.telegram_bot"]
+    env_file:
+      - .env
+    volumes:
+      - ./storage:/app/storage
+    depends_on:
+      - proposal-generator
+    restart: unless-stopped

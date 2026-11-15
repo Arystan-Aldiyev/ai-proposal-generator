@@ -1,0 +1,621 @@
+{
+  "split": "dev",
+  "config": "final",
+  "models": {
+    "extractor": "gpt-4o-mini",
+    "estimator": "gpt-4o",
+    "risk": "gpt-4o-mini",
+    "writer": "gpt-4o"
+  },
+  "use_rag": true,
+  "judge_model": "gpt-4o",
+  "cases_hash": "b74a0dffd9f3",
+  "runs": [
+    {
+      "case": "1. Стоматология — короткий бриф, бюджет «не миллионы»",
+      "idx": 1,
+      "rep": 0,
+      "run_id": "dev-final-01-r0-20261113194047",
+      "latency_s": 41.2,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6827,
+          "completion": 666
+        },
+        "text-embedding-3-small": {
+          "prompt": 129,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17432,
+          "completion": 1604
+        }
+      },
+      "cost_usd": 0.06105,
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 900000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.459,
+      "analogues": [
+        "project-f",
+        "project-a",
+        "project-c"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 7,
+        "tone": 8,
+        "readability": 8,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом соответствует брифу, предлагая два варианта реализации проекта, но не уточняет сроки, что может быть важно для клиента. Тон профессиональный, без излишних клише и заискивания. Структура КП ясная, информация подана компактно, но можно было бы улучшить детализацию по срокам. Все обязательные секции присутствуют, но некоторые, такие как \"not_included\", могли бы быть более детализированы в контексте специфики проекта."
+    },
+    {
+      "case": "2. Магазин цветов — AI-бот в WhatsApp",
+      "idx": 2,
+      "rep": 0,
+      "run_id": "dev-final-02-r0-20261113194130",
+      "latency_s": 39.1,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6704,
+          "completion": 772
+        },
+        "text-embedding-3-small": {
+          "prompt": 183,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17584,
+          "completion": 1489
+        }
+      },
+      "cost_usd": 0.06032,
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 855000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.766,
+      "analogues": [
+        "project-b",
+        "project-f",
+        "project-e"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 7,
+        "tone": 8,
+        "readability": 8,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом соответствует брифу, но есть некоторые несоответствия в деталях, например, неясно, как будет реализована интеграция с Kaspi. Тон профессиональный и уверенный, без излишних клише. Структура КП хорошо организована, текст читается легко, но можно было бы сократить некоторые разделы для большей лаконичности. Все обязательные секции присутствуют, но некоторые моменты, такие как поддержка нескольких языков, могли бы быть более подробно освещены."
+    },
+    {
+      "case": "3. Адвокатская контора — корпоративный сайт с SEO",
+      "idx": 3,
+      "rep": 0,
+      "run_id": "dev-final-03-r0-20261113194211",
+      "latency_s": 34.4,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 7120,
+          "completion": 829
+        },
+        "text-embedding-3-small": {
+          "prompt": 272,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17462,
+          "completion": 1726
+        }
+      },
+      "cost_usd": 0.06249,
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 4600000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.639,
+      "analogues": [
+        "project-a",
+        "project-f",
+        "project-c"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 8,
+        "tone": 8,
+        "readability": 7,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом хорошо структурировано и соответствует брифу, предлагая два варианта реализации проекта с различными уровнями SEO-оптимизации и архитектуры. Однако, не все детали бюджета и функционала сайта уточнены, что снижает оценку по фактической точности. Тон профессиональный, без излишних клише, но можно было бы добавить больше конкретики в некоторых разделах. Читаемость страдает из-за длинных абзацев и повторяющихся фраз в заголовках и первых строках. Все обязательные секции присутствуют, но некоторые из них могли бы быть более детализированы."
+    },
+    {
+      "case": "4. Магазин стройматериалов — редизайн с большим каталогом",
+      "idx": 4,
+      "rep": 0,
+      "run_id": "dev-final-04-r0-20261113194247",
+      "latency_s": 31.3,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 7051,
+          "completion": 749
+        },
+        "text-embedding-3-small": {
+          "prompt": 238,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17939,
+          "completion": 1653
+        }
+      },
+      "cost_usd": 0.06289,
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 9,
+      "retrieval_ok": true,
+      "price_ok": false,
+      "recommended_kzt": 1800000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.543,
+      "analogues": [
+        "project-c",
+        "project-f",
+        "project-a"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 7,
+        "tone": 8,
+        "readability": 8,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом соответствует брифу, но есть некоторые несоответствия, такие как упоминание миграции на Next.js в корпоративном варианте, что не было указано в брифе. Тон профессиональный, без излишних клише и заискиваний. Структура КП хорошо организована, текст читается легко, но есть небольшие повторения в заголовках и первых строках абзацев. Все обязательные секции присутствуют, но некоторые, такие как \"not_included\", могли бы быть более детализированы."
+    },
+    {
+      "case": "5. Курсы для подростков — быстрый лендинг",
+      "idx": 5,
+      "rep": 0,
+      "run_id": "dev-final-05-r0-20261113194321",
+      "latency_s": 29.5,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6601,
+          "completion": 689
+        },
+        "text-embedding-3-small": {
+          "prompt": 88,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 16841,
+          "completion": 1374
+        }
+      },
+      "cost_usd": 0.05725,
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 300000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.506,
+      "analogues": [
+        "project-e",
+        "project-f",
+        "project-c"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 8,
+        "tone": 7,
+        "readability": 8,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом соответствует брифу, предлагая два варианта реализации проекта, из которых эконом вариант на Tilda подходит под ограниченный бюджет клиента. Однако, стоимость в 300,000 KZT может быть выше ожиданий для \"небольшого бюджета\". Тон профессиональный, но местами встречаются клише, такие как \"веб-студия полного цикла\". Структура КП ясная и легко читаемая, но можно улучшить краткость в некоторых разделах. Все обязательные секции присутствуют, но некоторые, такие как \"not_included\", могли бы быть более детализированы в контексте проекта."
+    },
+    {
+      "case": "6. Дистрибьютор — внедрение ERP для учёта договоров",
+      "idx": 6,
+      "rep": 0,
+      "run_id": "dev-final-06-r0-20261113194352",
+      "latency_s": 33.1,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6815,
+          "completion": 681
+        },
+        "text-embedding-3-small": {
+          "prompt": 143,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17988,
+          "completion": 1605
+        }
+      },
+      "cost_usd": 0.06245,
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "asserts_passed": 9,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 6500000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.581,
+      "analogues": [
+        "project-d",
+        "project-b",
+        "project-c"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 7,
+        "tone": 8,
+        "readability": 8,
+        "completeness": 7
+      },
+      "judge_total": 30,
+      "judge_explanation": "КП в целом соответствует брифу, но есть некоторые несоответствия, например, неясно, как будет реализовано управление складскими остатками в варианте 'Эконом'. Тон профессиональный, без излишних клише и заискиваний. Структура КП ясная, информация подана компактно, но некоторые разделы, такие как 'architecture_intro', могли бы быть более детализированы. Включены все обязательные секции, но некоторые из них, например, 'not_included', могли бы быть более конкретными в отношении исключений."
+    },
+    {
+      "case": "7. Барбершоп — бот в Telegram для записи",
+      "idx": 7,
+      "rep": 0,
+      "run_id": "dev-final-07-r0-20261113194427",
+      "latency_s": 31.2,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6888,
+          "completion": 805
+        },
+        "text-embedding-3-small": {
+          "prompt": 221,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17780,
+          "completion": 1591
+        }
+      },
+      "cost_usd": 0.06188,
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 700000,
+      "expected_cautious": false,
+      "cautious": false,
+      "triage_reasons": [],
+      "top_score": 0.597,
+      "analogues": [
+        "project-b",
+        "project-f",
+        "project-e"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 7,
+        "tone": 8,
+        "readability": 8,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом соответствует брифу, но есть некоторые неточности в деталях, например, не упомянуты напоминания за час до записи в варианте 'Эконом'. Тон профессиональный, без излишних клише и заискивания. Структура КП ясная, информация подана компактно и без лишней воды. Все обязательные секции присутствуют, но некоторые, такие как 'portfolio', могли бы быть более детализированы. В целом, КП хорошо проработано, но есть небольшие недочёты в фактической точности и детализации."
+    },
+    {
+      "case": "8. Фитнес-центр — сайт с записью на занятия",
+      "idx": 8,
+      "rep": 0,
+      "run_id": "dev-final-08-r0-20261113194502",
+      "latency_s": 42.0,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6878,
+          "completion": 791
+        },
+        "text-embedding-3-small": {
+          "prompt": 272,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17494,
+          "completion": 1605
+        }
+      },
+      "cost_usd": 0.0613,
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 9,
+      "retrieval_ok": true,
+      "price_ok": false,
+      "recommended_kzt": 600000,
+      "expected_cautious": false,
+      "cautious": true,
+      "triage_reasons": [
+        "no_analogue"
+      ],
+      "top_score": 0.393,
+      "analogues": [
+        "project-f",
+        "project-e",
+        "project-a"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 7,
+        "tone": 8,
+        "readability": 8,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП в целом соответствует брифу, но есть некоторые несоответствия, такие как отсутствие упоминания о необходимости интеграции с календарем в \"Эконом\" варианте, что может быть критично для клиента. Тон профессиональный и уверенный, без излишних клише и заискиваний. Структура КП хорошо организована, текст читается легко, но можно было бы улучшить краткость в некоторых разделах. Все обязательные секции присутствуют, но некоторые, такие как \"not_included\", могли бы быть более детализированы, чтобы избежать недопонимания с клиентом."
+    },
+    {
+      "case": "9. Edge — крайне мало информации",
+      "idx": 9,
+      "rep": 0,
+      "run_id": "dev-final-09-r0-20261113194546",
+      "latency_s": 30.7,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6721,
+          "completion": 569
+        },
+        "text-embedding-3-small": {
+          "prompt": 22,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 17438,
+          "completion": 1556
+        }
+      },
+      "cost_usd": 0.0605,
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 10,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 750000,
+      "expected_cautious": true,
+      "cautious": true,
+      "triage_reasons": [
+        "low_info"
+      ],
+      "top_score": 0.476,
+      "analogues": [
+        "project-f",
+        "project-a",
+        "project-c"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 8,
+        "tone": 8,
+        "readability": 7,
+        "completeness": 9
+      },
+      "judge_total": 32,
+      "judge_explanation": "КП хорошо структурировано и покрывает все обязательные секции, включая детали по этапам и стоимости. Однако, в брифе не указаны конкретные требования, а КП предлагает два варианта без уточнения, что может быть рискованным. Тон профессиональный, без излишних клише, но readability страдает из-за длинных абзацев и отсутствия чёткой разбивки информации. В целом, КП соответствует ожиданиям, но требует уточнений на установочном созвоне."
+    },
+    {
+      "case": "10. Edge — нереалистичный бюджет vs скоуп",
+      "idx": 10,
+      "rep": 0,
+      "run_id": "dev-final-10-r0-20261113194618",
+      "latency_s": 35.6,
+      "tokens": {
+        "gpt-4o-mini": {
+          "prompt": 6945,
+          "completion": 794
+        },
+        "text-embedding-3-small": {
+          "prompt": 292,
+          "completion": 0
+        },
+        "gpt-4o": {
+          "prompt": 18445,
+          "completion": 1677
+        }
+      },
+      "cost_usd": 0.06441,
+      "llm_calls": 6,
+      "estimator_retries": 0,
+      "nda_portfolio_removed": 0,
+      "nda_text_fixed": 0,
+      "asserts": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "asserts_passed": 9,
+      "retrieval_ok": true,
+      "price_ok": true,
+      "recommended_kzt": 3000000,
+      "expected_cautious": true,
+      "cautious": true,
+      "triage_reasons": [
+        "budget_conflict"
+      ],
+      "top_score": 0.48,
+      "analogues": [
+        "project-c",
+        "project-b",
+        "project-f"
+      ],
+      "nda_leaks": 0,
+      "judge": {
+        "factual_accuracy": 3,
+        "tone": 6,
+        "readability": 7,
+        "completeness": 8
+      },
+      "judge_total": 24,
+      "judge_explanation": "КП значительно превышает заявленный бюджет в брифе (300 тыс. тенге), предлагая варианты за 3 млн и 7.1 млн тенге, что делает его нереалистичным для клиента. Тон КП более-менее профессиональный, но есть элементы заискивания, например, \"готовы предложить решение\". Структура КП в целом ясная, но есть дублирование информации в разных разделах. Все обязательные секции присутствуют, но некоторые из них, такие как \"pricing_intro\", не соответствуют ожиданиям клиента по бюджету."
+    }
+  ]
+}

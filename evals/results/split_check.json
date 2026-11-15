@@ -1,0 +1,135 @@
+{
+  "near_dup_threshold": 0.9,
+  "exact_duplicates": [],
+  "flagged": [],
+  "rows": [
+    {
+      "case": "T01. Автосервис — сайт с прайсом и онлайн-записью",
+      "max_dev": 0.462,
+      "closest_dev": "1. Стоматология — короткий бриф, бюджет «не миллионы»",
+      "max_kb": 0.418,
+      "closest_kb": "project-f",
+      "max_test": 0.437
+    },
+    {
+      "case": "T02. Свадебный фотограф — лендинг-портфолио",
+      "max_dev": 0.491,
+      "closest_dev": "2. Магазин цветов — AI-бот в WhatsApp",
+      "max_kb": 0.424,
+      "closest_kb": "project-e",
+      "max_test": 0.486
+    },
+    {
+      "case": "T03. Доставка воды — бот в WhatsApp с оплатой и CRM",
+      "max_dev": 0.598,
+      "closest_dev": "7. Барбершоп — бот в Telegram для записи",
+      "max_kb": 0.399,
+      "closest_kb": "project-b",
+      "max_test": 0.422
+    },
+    {
+      "case": "T04. Языковая школа — Telegram-бот для записи и FAQ",
+      "max_dev": 0.515,
+      "closest_dev": "5. Курсы для подростков — быстрый лендинг",
+      "max_kb": 0.48,
+      "closest_kb": "project-e",
+      "max_test": 0.403
+    },
+    {
+      "case": "T05. Строительная компания — корпоративный сайт на 3 языках + SEO",
+      "max_dev": 0.535,
+      "closest_dev": "4. Магазин стройматериалов — редизайн с большим каталогом",
+      "max_kb": 0.567,
+      "closest_kb": "project-a",
+      "max_test": 0.584
+    },
+    {
+      "case": "T06. Магазин сантехники — редизайн + каталог 3000 товаров из 1С",
+      "max_dev": 0.642,
+      "closest_dev": "4. Магазин стройматериалов — редизайн с большим каталогом",
+      "max_kb": 0.554,
+      "closest_kb": "project-c",
+      "max_test": 0.453
+    },
+    {
+      "case": "T07. Логистическая компания — система учёта заявок и рейсов",
+      "max_dev": 0.7,
+      "closest_dev": "6. Дистрибьютор — внедрение ERP для учёта договоров",
+      "max_kb": 0.551,
+      "closest_kb": "project-d",
+      "max_test": 0.41
+    },
+    {
+      "case": "T08. Клиника эстетической медицины — сайт с записью, 2 языка",
+      "max_dev": 0.672,
+      "closest_dev": "1. Стоматология — короткий бриф, бюджет «не миллионы»",
+      "max_kb": 0.389,
+      "closest_kb": "project-f",
+      "max_test": 0.531
+    },
+    {
+      "case": "T09. Налоговый консалтинг — сайт + блог под SEO",
+      "max_dev": 0.468,
+      "closest_dev": "3. Адвокатская контора — корпоративный сайт с SEO",
+      "max_kb": 0.544,
+      "closest_kb": "project-a",
+      "max_test": 0.52
+    },
+    {
+      "case": "T10. Девелопер — ТЗ на корпоративный сайт и лендинг ЖК",
+      "max_dev": 0.506,
+      "closest_dev": "10. Edge — нереалистичный бюджет vs скоуп",
+      "max_kb": 0.603,
+      "closest_kb": "project-a",
+      "max_test": 0.584
+    },
+    {
+      "case": "T11. Hard — почти пустой бриф про приложение",
+      "max_dev": 0.488,
+      "closest_dev": "10. Edge — нереалистичный бюджет vs скоуп",
+      "max_kb": 0.407,
+      "closest_kb": "project-b",
+      "max_test": 0.522
+    },
+    {
+      "case": "T12. Hard — маркетплейс с приложением за 500 тысяч",
+      "max_dev": 0.633,
+      "closest_dev": "10. Edge — нереалистичный бюджет vs скоуп",
+      "max_kb": 0.497,
+      "closest_kb": "project-c",
+      "max_test": 0.477
+    },
+    {
+      "case": "T13. Hard — мобильная игра (вне профиля агентства)",
+      "max_dev": 0.456,
+      "closest_dev": "10. Edge — нереалистичный бюджет vs скоуп",
+      "max_kb": 0.367,
+      "closest_kb": "project-c",
+      "max_test": 0.522
+    },
+    {
+      "case": "T14. Hard — prompt injection в брифе",
+      "max_dev": 0.509,
+      "closest_dev": "9. Edge — крайне мало информации",
+      "max_kb": 0.449,
+      "closest_kb": "project-f",
+      "max_test": 0.61
+    },
+    {
+      "case": "T15. Hard — бриф на английском",
+      "max_dev": 0.494,
+      "closest_dev": "1. Стоматология — короткий бриф, бюджет «не миллионы»",
+      "max_kb": 0.468,
+      "closest_kb": "project-f",
+      "max_test": 0.553
+    },
+    {
+      "case": "T16. Hard — шумная расшифровка голосового",
+      "max_dev": 0.508,
+      "closest_dev": "7. Барбершоп — бот в Telegram для записи",
+      "max_kb": 0.479,
+      "closest_kb": "project-b",
+      "max_test": 0.61
+    }
+  ]
+}

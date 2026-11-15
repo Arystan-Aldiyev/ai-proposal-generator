@@ -1,0 +1,162 @@
+{
+  "test-baseline-01-r0-20261113195334": {
+    "config": "baseline",
+    "main_judge": 32,
+    "second_judge": 34
+  },
+  "test-baseline-02-r0-20261113195349": {
+    "config": "baseline",
+    "main_judge": 32,
+    "second_judge": 32
+  },
+  "test-baseline-03-r0-20261113195406": {
+    "config": "baseline",
+    "main_judge": 32,
+    "second_judge": 32
+  },
+  "test-baseline-04-r0-20261113195424": {
+    "config": "baseline",
+    "main_judge": 30,
+    "second_judge": 32
+  },
+  "test-baseline-05-r0-20261113195439": {
+    "config": "baseline",
+    "main_judge": 32,
+    "second_judge": 34
+  },
+  "test-baseline-06-r0-20261113195457": {
+    "config": "baseline",
+    "main_judge": 32,
+    "second_judge": 34
+  },
+  "test-baseline-07-r0-20261113195512": {
+    "config": "baseline",
+    "main_judge": 32,
+    "second_judge": 32
+  },
+  "test-baseline-08-r0-20261113195531": {
+    "config": "baseline",
+    "main_judge": 32,
+    "second_judge": 32
+  },
+  "test-baseline-09-r0-20261113195547": {
+    "config": "baseline",
+    "main_judge": 32,
+    "second_judge": 32
+  },
+  "test-baseline-10-r0-20261113195601": {
+    "config": "baseline",
+    "main_judge": 28,
+    "second_judge": 30
+  },
+  "test-baseline-11-r0-20261113195618": {
+    "config": "baseline",
+    "main_judge": 22,
+    "second_judge": 30
+  },
+  "test-baseline-12-r0-20261113195637": {
+    "config": "baseline",
+    "main_judge": 23,
+    "second_judge": 31
+  },
+  "test-baseline-13-r0-20261113195655": {
+    "config": "baseline",
+    "main_judge": 28,
+    "second_judge": 27
+  },
+  "test-baseline-14-r0-20261113195717": {
+    "config": "baseline",
+    "main_judge": 32,
+    "second_judge": 35
+  },
+  "test-baseline-15-r0-20261113195734": {
+    "config": "baseline",
+    "main_judge": 32,
+    "second_judge": 35
+  },
+  "test-baseline-16-r0-20261113195756": {
+    "config": "baseline",
+    "main_judge": 32,
+    "second_judge": 32
+  },
+  "test-final-01-r0-20261113195333": {
+    "config": "final",
+    "main_judge": 32,
+    "second_judge": 35
+  },
+  "test-final-02-r0-20261113195406": {
+    "config": "final",
+    "main_judge": 32,
+    "second_judge": 34
+  },
+  "test-final-03-r0-20261113195438": {
+    "config": "final",
+    "main_judge": 32,
+    "second_judge": 35
+  },
+  "test-final-04-r0-20261113195516": {
+    "config": "final",
+    "main_judge": 32,
+    "second_judge": 35
+  },
+  "test-final-05-r0-20261113195549": {
+    "config": "final",
+    "main_judge": 33,
+    "second_judge": 35
+  },
+  "test-final-06-r0-20261113195622": {
+    "config": "final",
+    "main_judge": 32,
+    "second_judge": 34
+  },
+  "test-final-07-r0-20261113195703": {
+    "config": "final",
+    "main_judge": 32,
+    "second_judge": 35
+  },
+  "test-final-08-r0-20261113195740": {
+    "config": "final",
+    "main_judge": 32,
+    "second_judge": 34
+  },
+  "test-final-09-r0-20261113195814": {
+    "config": "final",
+    "main_judge": 32,
+    "second_judge": 34
+  },
+  "test-final-10-r0-20261113195847": {
+    "config": "final",
+    "main_judge": 32,
+    "second_judge": 35
+  },
+  "test-final-11-r0-20261113195925": {
+    "config": "final",
+    "main_judge": 24,
+    "second_judge": 31
+  },
+  "test-final-12-r0-20261113195953": {
+    "config": "final",
+    "main_judge": 28,
+    "second_judge": 35
+  },
+  "test-final-13-r0-20261113200037": {
+    "config": "final",
+    "main_judge": 30,
+    "second_judge": 30
+  },
+  "test-final-14-r0-20261113200113": {
+    "config": "final",
+    "main_judge": 32,
+    "second_judge": 36
+  },
+  "test-final-15-r0-20261113200146": {
+    "config": "final",
+    "main_judge": 32,
+    "second_judge": 31
+  },
+  "test-final-16-r0-20261113200227": {
+    "config": "final",
+    "main_judge": 30,
+    "second_judge": 31
+  }
+}

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CNS · Proposal Generator</title>
+<style>
+  :root { --accent:#c9a227; --dark:#1a2332; --line:#e5e7eb; --muted:#6b7785; }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; height: 100vh; display: flex; overflow: hidden;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #eceef0; color: #2c3e50;
+  }
+
+  /* ── Левая панель ── */
+  .left {
+    width: 430px; flex-shrink: 0; background: #fff;
+    border-right: 1px solid var(--line); padding: 24px 24px 30px;
+    display: flex; flex-direction: column; overflow-y: auto;
+  }
+  .logo { font-size: 22px; font-weight: 800; color: #3b4cca; }
+  .logo span { color: var(--accent); font-size: 12px; margin-left: 6px; letter-spacing: 1.5px; }
+  h1 { font-size: 17px; margin: 14px 0 3px; }
+  .sub { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+  textarea {
+    width: 100%; min-height: 200px; resize: vertical; padding: 12px;
+    border: 1px solid var(--line); border-radius: 6px; font-size: 13px;
+    font-family: inherit; line-height: 1.5;
+  }
+  .examples { margin-top: 10px; font-size: 12px; color: var(--muted); }
+  .examples a { color: #3b4cca; cursor: pointer; margin-right: 12px; }
+  button {
+    padding: 11px 14px; background: var(--dark); color: #fff; border: none;
+    border-radius: 6px; font-size: 13.5px; font-weight: 600; cursor: pointer;
+    font-family: inherit;
+  }
+  button:disabled { opacity: 0.5; cursor: default; }
+  button.ghost { background: #fff; color: var(--dark); border: 1px solid var(--line); }
+  button.gold { background: var(--accent); color: var(--dark); font-weight: 700; }
+  #go { margin-top: 12px; width: 100%; }
+
+  .steps { margin-top: 18px; }
+  .step { padding: 6px 0; font-size: 13px; color: #aeb4bd; display: flex; gap: 9px; }
+  .step .ic { width: 16px; text-align: center; }
+  .step.active { color: var(--dark); font-weight: 600; }
+  .step.done { color: #2e7d32; }
+  .err { margin-top: 14px; color: #c0392b; font-size: 13px; white-space: pre-wrap; }
+
+  /* ── Правая панель ── */
+  .right { flex: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; }
+  .placeholder {
+    flex: 1; min-height: 0; display: flex; align-items: center;
+    justify-content: center; color: var(--muted); font-size: 14px;
+    text-align: center; padding: 20px;
+  }
+  .toolbar {
+    flex-shrink: 0; background: var(--dark); padding: 12px 16px;
+    display: none; flex-direction: column; gap: 10px;
+  }
+  .toolbar.show { display: flex; }
+  .revise-row { display: flex; gap: 8px; }
+  .revise-row input {
+    flex: 1; padding: 10px 12px; border: none; border-radius: 6px;
+    font-size: 13px; font-family: inherit;
+  }
+  .actions { display: flex; gap: 8px; align-items: center; }
+  .actions .info { color: #aab1bd; font-size: 12px; margin-left: auto; }
+  iframe {
+    flex: 1; min-height: 0; width: 100%; height: 100%;
+    border: none; display: block; background: #eceef0;
+  }
+  /* атрибут hidden должен побеждать display:flex/block выше */
+  .placeholder[hidden], iframe[hidden] { display: none; }
+
+  /* ── Модалка имени файла ── */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(26,35,50,0.55);
+    display: flex; align-items: center; justify-content: center; z-index: 50;
+  }
+  .modal-overlay[hidden] { display: none; }
+  .modal {
+    background: #fff; border-radius: 10px; padding: 22px 24px; width: 420px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  }
+  .modal h3 { margin: 0 0 4px; font-size: 16px; }
+  .modal .msub { color: var(--muted); font-size: 12.5px; margin-bottom: 14px; }
+  .modal label {
+    display: block; padding: 9px 0; font-size: 13.5px; cursor: pointer;
+    border-bottom: 1px solid var(--line);
+  }
+  .modal label .fn { color: var(--muted); font-size: 12.5px; }
+  .modal #fnCustom {
+    width: 100%; margin-top: 8px; padding: 9px 11px; font-size: 13px;
+    border: 1px solid var(--line); border-radius: 6px; font-family: inherit;
+  }
+  .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<div class="left">
+  <div class="logo">CNS <span>AGENCY</span></div>
+  <h1>Proposal Generator</h1>
+  <div class="sub">Бриф клиента или ТЗ → коммерческое предложение.</div>
+
+  <textarea id="brief" placeholder="Вставьте бриф клиента или ТЗ…"></textarea>
+  <div class="examples">
+    Примеры:
+    <a data-ex="dent">стоматология</a>
+    <a data-ex="flowers">бот для цветов</a>
+    <span style="float:right">
+      <a id="uploadLink">📎 Файл</a>
+      <a id="recordLink" style="margin-left:10px">🎤 Голос</a>
+      <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg,.webp,.mp3,.m4a,.wav,.webm,.ogg" hidden>
+    </span>
+  </div>
+  <div id="uploadStatus" style="font-size:12px;color:var(--muted);margin-top:6px;display:none;"></div>
+  <button id="go">Сгенерировать КП</button>
+
+  <div class="steps" id="steps" hidden>
+    <div class="step" data-k="extract"><span class="ic">○</span> Извлекаю требования</div>
+    <div class="step" data-k="retrieve"><span class="ic">○</span> Ищу похожие проекты</div>
+    <div class="step" data-k="estimate"><span class="ic">○</span> Считаю смету</div>
+    <div class="step" data-k="risk"><span class="ic">○</span> Анализирую риски</div>
+    <div class="step" data-k="triage"><span class="ic">○</span> Оцениваю полноту брифа</div>
+    <div class="step" data-k="write"><span class="ic">○</span> Пишу текст КП</div>
+  </div>
+  <div class="err" id="err"></div>
+</div>
+
+<div class="right">
+  <div class="toolbar" id="toolbar">
+    <div class="revise-row">
+      <input id="revise" placeholder="Правка словами: «подними Эконом до 950 000», «убери блок про CRM», «тон суше»">
+      <button class="gold" id="applyBtn">Применить правку</button>
+    </div>
+    <div class="actions">
+      <button class="ghost" id="revertBtn">Откатить правку</button>
+      <button class="gold" id="pdfBtn">Скачать PDF</button>
+      <span class="info" id="reviseStatus"></span>
+    </div>
+  </div>
+  <div class="placeholder" id="placeholder">Сгенерируйте КП — здесь появится редактируемое превью</div>
+  <iframe id="frame" hidden></iframe>
+</div>
+
+<!-- Модалка подтверждения распознанного Spec (HITL после extract) -->
+<div class="modal-overlay" id="specModal" hidden>
+  <div class="modal" style="width: 520px;">
+    <h3>Проверьте распознанные требования</h3>
+    <div class="msub">Агент извлёк Spec из брифа. Поправьте если что-то не так, или продолжите как есть.</div>
+    <div style="display:grid; grid-template-columns:140px 1fr; gap:8px 12px; font-size:13px; margin-top:10px;">
+      <label style="align-self:center;">Тип проекта</label>
+      <input id="specProjectType" type="text" style="padding:6px 9px; border:1px solid var(--line); border-radius:5px;">
+      <label style="align-self:center;">Индустрия клиента</label>
+      <input id="specClientIndustry" type="text" style="padding:6px 9px; border:1px solid var(--line); border-radius:5px;">
+      <label style="align-self:center;">Ярлык клиента</label>
+      <input id="specClientLabel" type="text" style="padding:6px 9px; border:1px solid var(--line); border-radius:5px;">
+      <label style="align-self:center;">Бюджет (₸)</label>
+      <input id="specBudgetKzt" type="number" min="0" placeholder="оставь пустым если не назван" style="padding:6px 9px; border:1px solid var(--line); border-radius:5px;">
+      <label style="align-self:start; padding-top:6px;">Состав работ</label>
+      <textarea id="specScope" rows="4" placeholder="по одному пункту на строку" style="padding:6px 9px; border:1px solid var(--line); border-radius:5px; font-family:inherit; resize:vertical;"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="ghost" id="specContinueAsIs">Продолжить как есть</button>
+      <button class="gold" id="specApplyAndContinue">Применить и продолжить</button>
+    </div>
+  </div>
+</div>
+
+<!-- Модалка выбора имени файла -->
+<div class="modal-overlay" id="modal" hidden>
+  <div class="modal">
+    <h3>Имя файла PDF</h3>
+    <div class="msub">Как назвать скачиваемый файл</div>
+    <label><input type="radio" name="fn" value="short" checked>
+      Короткое — <span class="fn" id="fnShort">…</span></label>
+    <label><input type="radio" name="fn" value="num">
+      С номером — <span class="fn" id="fnNum">…</span></label>
+    <label><input type="radio" name="fn" value="custom"> Своё имя
+      <input type="text" id="fnCustom" placeholder="например, КП для стоматологии" disabled></label>
+    <div class="modal-actions">
+      <button class="ghost" id="modalCancel">Отмена</button>
+      <button class="gold" id="modalDownload">Скачать</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const STEP_ORDER = ['extract', 'retrieve', 'estimate', 'risk', 'triage', 'write'];
+let runId = null;
+let clientLabel = '';
+
+const METHOD_LABELS = {
+  pdf_text:      'Текст извлечён напрямую из PDF',
+  pdf_vision:    'PDF-скан распознан через GPT-4o vision',
+  image_vision:  'Изображение распознано через GPT-4o vision',
+  audio_whisper: 'Голосовое расшифровано через Whisper',
+};
+
+async function uploadFile(file, fileNameForStatus) {
+  $('uploadStatus').style.display = 'block';
+  $('uploadStatus').textContent = `Распознаю «${fileNameForStatus}»…`;
+  const fd = new FormData();
+  fd.append('file', file);
+  try {
+    const resp = await fetch('/upload-tz', { method: 'POST', body: fd });
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.detail || ('HTTP ' + resp.status));
+    $('brief').value = data.text;
+    $('uploadStatus').textContent = `✓ ${METHOD_LABELS[data.method] || data.method} (${data.text.length} симв.)`;
+  } catch (err) {
+    $('uploadStatus').textContent = 'Ошибка: ' + err.message;
+  }
+}
+
+$('uploadLink').onclick = () => $('fileInput').click();
+$('fileInput').onchange = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  await uploadFile(file, file.name);
+  e.target.value = '';
+};
+
+// ── Запись голоса прямо из браузера ──
+let mediaRecorder = null;
+let recordedChunks = [];
+$('recordLink').onclick = async () => {
+  if (mediaRecorder && mediaRecorder.state === 'recording') {
+    mediaRecorder.stop();
+    return;
+  }
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    $('uploadStatus').style.display = 'block';
+    $('uploadStatus').textContent = 'Браузер не поддерживает запись звука. Используйте загрузку файла.';
+    return;
+  }
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    recordedChunks = [];
+    mediaRecorder = new MediaRecorder(stream);
+    mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) recordedChunks.push(e.data); };
+    mediaRecorder.onstop = async () => {
+      stream.getTracks().forEach(t => t.stop());
+      $('recordLink').textContent = '🎤 Голос';
+      const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+      const file = new File([blob], 'voice.webm', { type: 'audio/webm' });
+      await uploadFile(file, 'голосовое (запись)');
+    };
+    mediaRecorder.start();
+    $('recordLink').textContent = '⏹ Остановить запись';
+    $('uploadStatus').style.display = 'block';
+    $('uploadStatus').textContent = 'Запись идёт… нажмите «Остановить запись» когда закончите.';
+  } catch (err) {
+    $('uploadStatus').style.display = 'block';
+    $('uploadStatus').textContent = 'Не удалось включить микрофон: ' + err.message;
+  }
+};
+
+const EXAMPLES = {
+  dent: "Здравствуйте! Нам по рекомендации вас посоветовали. У нас стоматология в Астане, 2 филиала. Сайт старый на вордпрессе, кривой на телефоне, заявки почти не идут. Хотим современный сайт чтобы записывались онлайн. Бюджет обсуждаем, но не миллионы конечно. Сколько будет стоить и сроки?",
+  flowers: "Привет. У меня магазин цветов, заказы все через ватсап, я не успеваю отвечать, теряю клиентов ночью особенно. Хочу бота который сам принимает заказ, спрашивает букет, дату, адрес доставки, и счёт выставляет каспи. И чтобы в crm падало. Работаю на амо. Сколько?"
+};
+document.querySelectorAll('[data-ex]').forEach(a => {
+  a.onclick = () => { $('brief').value = EXAMPLES[a.dataset.ex]; };
+});
+
+function markStep(key, state) {
+  const el = document.querySelector(`.step[data-k="${key}"]`);
+  if (!el) return;
+  el.className = 'step ' + state;
+  el.querySelector('.ic').textContent = state === 'done' ? '✓' : (state === 'active' ? '▸' : '○');
+}
+
+function handleEvent(ev) {
+  if (ev.step === 'error') { $('err').textContent = ev.detail || 'Ошибка генерации'; return; }
+  if (ev.step === 'spec_ready') {
+    // HITL точка: extract завершён, Spec на проверку у пользователя
+    markStep('extract', 'done');
+    runId = ev.run_id;
+    openSpecModal(ev.spec);
+    return;
+  }
+  if (ev.step === 'done') {
+    STEP_ORDER.forEach(k => markStep(k, 'done'));
+    runId = ev.run_id;
+    clientLabel = ev.client_label || '';
+    showEditor();
+    return;
+  }
+  const idx = STEP_ORDER.indexOf(ev.step);
+  STEP_ORDER.forEach((k, i) => markStep(k, i < idx ? 'done' : (i === idx ? 'active' : '')));
+}
+
+function openSpecModal(spec) {
+  $('specProjectType').value = spec.project_type || '';
+  $('specClientIndustry').value = spec.client_industry || '';
+  $('specClientLabel').value = spec.client_label || '';
+  $('specBudgetKzt').value = spec.budget_kzt || '';
+  $('specScope').value = (spec.scope || []).join('\n');
+  $('specModal').hidden = false;
+}
+
+async function streamFrom(url, options) {
+  const resp = await fetch(url, options);
+  if (!resp.ok || !resp.body) throw new Error('HTTP ' + resp.status);
+  const reader = resp.body.getReader();
+  const decoder = new TextDecoder();
+  let buf = '';
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buf += decoder.decode(value, { stream: true });
+    const chunks = buf.split('\n\n');
+    buf = chunks.pop();
+    for (const chunk of chunks) {
+      const line = chunk.split('\n').find(l => l.startsWith('data: '));
+      if (line) handleEvent(JSON.parse(line.slice(6)));
+    }
+  }
+}
+
+async function continueAfterSpec(specPatch) {
+  $('specModal').hidden = true;
+  $('placeholder').textContent = 'Продолжаю с подтверждённым Spec…';
+  try {
+    await streamFrom('/continue/' + encodeURIComponent(runId), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ spec_patch: specPatch }),
+    });
+  } catch (e) {
+    $('err').textContent = e.message;
+    $('placeholder').textContent = 'Ошибка продолжения генерации.';
+  } finally {
+    $('go').disabled = false;
+  }
+}
+
+$('specContinueAsIs').onclick = () => continueAfterSpec(null);
+$('specApplyAndContinue').onclick = () => {
+  // собираем правки только по тем полям, что менеджер мог менять
+  const patch = {};
+  patch.project_type = $('specProjectType').value.trim();
+  patch.client_industry = $('specClientIndustry').value.trim() || null;
+  patch.client_label = $('specClientLabel').value.trim();
+  const budget = $('specBudgetKzt').value.trim();
+  patch.budget_kzt = budget ? parseInt(budget, 10) : null;
+  const scope = $('specScope').value.split('\n').map(s => s.trim()).filter(Boolean);
+  if (scope.length) patch.scope = scope;
+  continueAfterSpec(patch);
+};
+
+function showEditor() {
+  $('frame').src = '/editor/' + encodeURIComponent(runId);
+  $('frame').hidden = false;
+  $('placeholder').hidden = true;
+  $('toolbar').classList.add('show');
+}
+function reloadEditor() { $('frame').contentWindow.location.reload(); }
+
+$('go').onclick = async () => {
+  const brief = $('brief').value.trim();
+  if (!brief) { $('err').textContent = 'Введите бриф.'; return; }
+  $('err').textContent = '';
+  $('go').disabled = true;
+  $('steps').hidden = false;
+  $('toolbar').classList.remove('show');
+  $('frame').hidden = true;
+  $('placeholder').hidden = false;
+  $('placeholder').textContent = 'Агенты работают…';
+  STEP_ORDER.forEach(k => markStep(k, ''));
+
+  try {
+    await streamFrom('/generate', {
+      method: 'POST',
+      body: new URLSearchParams({ brief }),
+    });
+  } catch (e) {
+    $('err').textContent = e.message;
+    $('placeholder').textContent = 'Не удалось сгенерировать КП.';
+  } finally {
+    // disabled снимем только когда полный цикл (включая /continue) закончится;
+    // /continue сам разблокирует кнопку в своём finally.
+    // Если /generate не дошёл до spec_ready (ошибка) — разблокируем здесь.
+    if (!runId) $('go').disabled = false;
+  }
+};
+
+$('applyBtn').onclick = async () => {
+  const instruction = $('revise').value.trim();
+  if (!instruction || !runId) return;
+  $('applyBtn').disabled = true;
+  $('reviseStatus').textContent = 'Ревизор применяет правку…';
+  try {
+    const resp = await fetch('/revise/' + encodeURIComponent(runId), {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ instruction })
+    });
+    if (!resp.ok) {
+      const d = await resp.json().catch(() => ({}));
+      throw new Error(d.detail || ('HTTP ' + resp.status));
+    }
+    $('revise').value = '';
+    $('reviseStatus').textContent = 'Правка применена';
+    reloadEditor();
+  } catch (e) {
+    $('reviseStatus').textContent = 'Ошибка: ' + e.message;
+  } finally {
+    $('applyBtn').disabled = false;
+  }
+};
+
+$('revertBtn').onclick = async () => {
+  if (!runId) return;
+  $('revertBtn').disabled = true;
+  try {
+    const resp = await fetch('/revert/' + encodeURIComponent(runId), { method: 'POST' });
+    if (!resp.ok) {
+      const d = await resp.json().catch(() => ({}));
+      throw new Error(d.detail || ('HTTP ' + resp.status));
+    }
+    $('reviseStatus').textContent = 'Откат выполнен';
+    reloadEditor();
+  } catch (e) {
+    $('reviseStatus').textContent = 'Ошибка: ' + e.message;
+  } finally {
+    $('revertBtn').disabled = false;
+  }
+};
+
+// ── Модалка имени файла ──
+function pad3(n) { return String(n).padStart(3, '0'); }
+function dateTag() {
+  const d = new Date();
+  return String(d.getDate()).padStart(2, '0') + '-' + String(d.getMonth() + 1).padStart(2, '0');
+}
+function shortName() {
+  const first = (clientLabel || 'Клиент').trim().split(/\s+/)[0];
+  return `КП-${first}-${dateTag()}.pdf`;
+}
+function nextCounter() { return (parseInt(localStorage.getItem('cns_pdf_counter') || '0', 10) || 0) + 1; }
+
+$('pdfBtn').onclick = () => {
+  if (!runId) return;
+  $('fnShort').textContent = shortName();
+  $('fnNum').textContent = `КП-${pad3(nextCounter())}.pdf`;
+  document.querySelector('input[name=fn][value=short]').checked = true;
+  $('fnCustom').disabled = true;
+  $('fnCustom').value = '';
+  $('modal').hidden = false;
+};
+document.querySelectorAll('input[name=fn]').forEach(r => {
+  r.onchange = () => { $('fnCustom').disabled = r.value !== 'custom'; if (r.value === 'custom') $('fnCustom').focus(); };
+});
+$('modalCancel').onclick = () => { $('modal').hidden = true; };
+
+$('modalDownload').onclick = async () => {
+  const mode = document.querySelector('input[name=fn]:checked').value;
+  let filename;
+  if (mode === 'short') {
+    filename = shortName();
+  } else if (mode === 'num') {
+    const n = nextCounter();
+    localStorage.setItem('cns_pdf_counter', String(n));
+    filename = `КП-${pad3(n)}.pdf`;
+  } else {
+    filename = ($('fnCustom').value.trim() || 'КП') + '';
+    if (!filename.toLowerCase().endsWith('.pdf')) filename += '.pdf';
+  }
+  $('modal').hidden = true;
+  $('reviseStatus').textContent = 'Готовлю PDF…';
+  try {
+    const resp = await fetch('/pdf/' + encodeURIComponent(runId));
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const blob = await resp.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    $('reviseStatus').textContent = 'PDF скачан: ' + filename;
+  } catch (e) {
+    $('reviseStatus').textContent = 'Ошибка PDF: ' + e.message;
+  }
+};
+</script>
+</body>
+</html>
